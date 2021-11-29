@@ -19,6 +19,8 @@ public class MovingReels : MonoBehaviour
     [SerializeField] private RectTransform stopButtonRT;
     [SerializeField] private float symbolHight;
     [SerializeField] private int visibleSymb;
+    [SerializeField] private WinLinesChecker WLchecker; //second
+    [SerializeField] private ReelAnalyzerAfterSpin RTanalyzer; //first
 
     private Dictionary<RectTransform, MovingSymbols> reelsDictionary;
     private float startPosY;
@@ -83,15 +85,33 @@ public class MovingReels : MonoBehaviour
                 ResetPosition(reelRT);
                 if(reelRT.position.x == posReel3)
                 {
-                    stopButtonRT.localScale = Vector3.zero;
                     stopButton.interactable = false;
 
-                    playButtonRT.localScale = Vector3.one;
-                    playButton.interactable = true;
+                    RTanalyzer.StartAnalysisReel();
+                    WLchecker.StartWinAnalys();
+
+                    StartCoroutine(WaitForAnalyz(reelRT));
+
                 }
+
             });
     }
 
+    IEnumerator WaitForAnalyz(RectTransform ReelRT)
+    {
+
+        yield return new WaitUntil(() => WLchecker.ButtonActivate == true);
+        if (reelsDictionary[ReelRT].ReelState == ReelState.Stop)
+        {
+            stopButtonRT.localScale = Vector3.zero;
+            
+            playButtonRT.localScale = Vector3.one;
+            playButton.interactable = true;
+
+            WLchecker.ButtonActivate = false;
+        }
+
+    }
     private void CorrectReelPosition(RectTransform reel)
     {
         DOTween.Kill(reel);

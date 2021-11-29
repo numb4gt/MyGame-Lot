@@ -28,4 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88bd0e8beb456fd4a9d7936e9e636426, type: 2}
   - {fileID: 11400000, guid: fa0bddbe126fbef4d8e2e1bac5322255, type: 2}
   - {fileID: 11400000, guid: 279d1c3dfca2dcf458f84622c276a1a0, type: 2}
+  - {fileID: 11400000, guid: 3dcd78d9988683440997730354755483, type: 2}
   visibleSymbolsOnReel: 3
+  winLines:
+  - {fileID: 11400000, guid: 242c78dc65d92d84ba51fbbf329f9445, type: 2}
+  - {fileID: 11400000, guid: 5104ffdfb7f18074c81966cf97d63ee9, type: 2}

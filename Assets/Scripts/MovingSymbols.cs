@@ -38,6 +38,7 @@ public class MovingSymbols : MonoBehaviour
             }
         }
     }
+
     public void ResetSymbols(float ReelStartPosY)
     {
         currenSymbolIndex = 0;
