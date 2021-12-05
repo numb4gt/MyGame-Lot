@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: GreenFlower
   m_EditorClassIdentifier: 
   symbolImage: {fileID: 21300000, guid: 21d6c08633e156a4584c0cd49563c015, type: 3}
-  symbolCoast: 0
+  symbolCoast: 5
   symbolType: 0
+  isWin: 0
+  numberForFS: 0

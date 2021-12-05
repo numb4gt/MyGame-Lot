@@ -82,12 +82,12 @@ public class MovingSymbols : MonoBehaviour
     {
         if (reelState == ReelState.Stopping || reelState == ReelState.ForceStopping)
         {
-            symbolSprite.GetComponent<Image>().sprite = GetFinalSprite();
+            symbolSprite.GetComponent<SymbolFotAnalyzer>().SymbolImage.sprite = GetFinalSprite();
             currenSymbolIndex++;
         }
         else
         {
-            symbolSprite.GetComponent<Image>().sprite = GetRandomSymbol();
+            symbolSprite.GetComponent<SymbolFotAnalyzer>().SymbolImage.sprite = GetRandomSymbol();
         }
     }
 

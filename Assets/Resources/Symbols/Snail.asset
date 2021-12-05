@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Snail
   m_EditorClassIdentifier: 
   symbolImage: {fileID: 21300000, guid: 8cf50bae319b07a42a9e0f197ba5ef25, type: 3}
-  symbolCoast: 0
+  symbolCoast: 50
   symbolType: 0
   isWin: 1
+  numberForFS: 0

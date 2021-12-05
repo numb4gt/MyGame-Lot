@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: PurpleFloiwer
   m_EditorClassIdentifier: 
   symbolImage: {fileID: 21300000, guid: bc26ee8608e5c614c98231bd6f58fdc3, type: 3}
-  symbolCoast: 0
+  symbolCoast: 5
   symbolType: 0
+  isWin: 0
+  numberForFS: 0

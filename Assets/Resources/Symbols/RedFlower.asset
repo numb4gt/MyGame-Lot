@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: RedFlower
   m_EditorClassIdentifier: 
   symbolImage: {fileID: 21300000, guid: bfed4a1b6e80e544485abeb43231a30e, type: 3}
-  symbolCoast: 0
+  symbolCoast: 5
   symbolType: 0
+  isWin: 0
+  numberForFS: 0

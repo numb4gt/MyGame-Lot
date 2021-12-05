@@ -1,13 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class WinLinesChecker : MonoBehaviour
 {
     [SerializeField] private SymbolFotAnalyzer[] symbols;
     [SerializeField] private GameConfig gameConfig;
+    [SerializeField] private Text Counter;
     public bool ButtonActivate = false;
+    private int prizeWin;
 
+
+    private void CountPrize(List<SymbolFotAnalyzer> winSymbols)
+    {
+        var startPrize = prizeWin;
+        var prizeOfComb = winSymbols[0].SymbolWin;
+        prizeWin += prizeOfComb;     
+        Counter.DOCounter(startPrize, prizeWin, 1.5f);        
+    }
 
     private void WinLineCheck(WinLine winLine)
     {
@@ -21,6 +33,7 @@ public class WinLinesChecker : MonoBehaviour
         if (winSymbol1.SymbolType == winSymbol2.SymbolType && winSymbol2.SymbolType == winSymbol3.SymbolType)
         {
             AnimateSymbol(List);
+            CountPrize(List.WinList);
         }
     }
 
@@ -53,7 +66,7 @@ public class WinLinesChecker : MonoBehaviour
         return resultsList;
     }
 
-    private void AnimateSymbol(ListsForAnalys resultList)
+    public void AnimateSymbol(ListsForAnalys resultList)
     {
 
         var winSymbols = resultList.WinList;
@@ -61,7 +74,9 @@ public class WinLinesChecker : MonoBehaviour
 
         foreach (SymbolFotAnalyzer winSymbol in winSymbols)
         {
+            winSymbol.ParticleAnimation.Play();
             winSymbol.SymbolAnimation.Play("pulse");
+            
         }
         foreach (SymbolFotAnalyzer loseSymbol in loseSymbols)
         {

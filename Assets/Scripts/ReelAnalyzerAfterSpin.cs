@@ -15,38 +15,47 @@ public class ReelAnalyzerAfterSpin : MonoBehaviour
         if (symbol.SymbolNumberFS == 0) //make with case
         {
             symbol.SymbolType = symbolType.blue_flower;
+            symbol.SymbolWin = 5;
         }
         else if (symbol.SymbolNumberFS == 1)
         {
             symbol.SymbolType = symbolType.butterfly;
+            symbol.SymbolWin = 10;
         }
         else if (symbol.SymbolNumberFS == 2)
         {
             symbol.SymbolType = symbolType.scatter_clover;  //remove in 5 parts
+            symbol.SymbolWin = 100;
         }
         else if (symbol.SymbolNumberFS == 3)
         {
             symbol.SymbolType = symbolType.frog;
+            symbol.SymbolWin = 20;
         }
         else if (symbol.SymbolNumberFS == 4)
         {
             symbol.SymbolType = symbolType.green_flower;
+            symbol.SymbolWin = 5;
         }
         else if (symbol.SymbolNumberFS == 5)
         {
             symbol.SymbolType = symbolType.purple_flower;
+            symbol.SymbolWin = 5;
         }
         else if (symbol.SymbolNumberFS == 6)
         {
             symbol.SymbolType = symbolType.red_flower;
+            symbol.SymbolWin = 5;
         }
         else if (symbol.SymbolNumberFS == 7)
         {
             symbol.SymbolType = symbolType.snail;
+            symbol.SymbolWin = 50;
         }
         else if (symbol.SymbolNumberFS == 8)
         {
             symbol.SymbolType = symbolType.yellow_flower;
+            symbol.SymbolWin = 5;
         }
 
     }
