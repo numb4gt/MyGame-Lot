@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df59b61c60db0e4cb6db181353f0ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  symbolRectTransform: {fileID: 8829000933883315581}
   symbolAnimation: {fileID: 5936640671271679363}
   particleAnimation: {fileID: 7146172848082372102}
   symbolImage: {fileID: 2925878690455966992}
@@ -556,6 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df59b61c60db0e4cb6db181353f0ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  symbolRectTransform: {fileID: 711294039075243200}
   symbolAnimation: {fileID: 2713624056176111460}
   particleAnimation: {fileID: 2238445148226101011}
   symbolImage: {fileID: 7185769453387182857}
@@ -622,6 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df59b61c60db0e4cb6db181353f0ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  symbolRectTransform: {fileID: 3553352511770724430}
   symbolAnimation: {fileID: 7734109945398464575}
   particleAnimation: {fileID: 8956120711503950145}
   symbolImage: {fileID: 1679205707563529818}
@@ -1186,6 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df59b61c60db0e4cb6db181353f0ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  symbolRectTransform: {fileID: 8064600592975340834}
   symbolAnimation: {fileID: 2556750345093228501}
   particleAnimation: {fileID: 196916694840377468}
   symbolImage: {fileID: 7056342713252200997}

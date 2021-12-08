@@ -9,16 +9,26 @@ public class WinLinesChecker : MonoBehaviour
     [SerializeField] private SymbolFotAnalyzer[] symbols;
     [SerializeField] private GameConfig gameConfig;
     [SerializeField] private Text Counter;
+    [SerializeField] private MovingReels movingReels;
     public bool ButtonActivate = false;
     private int prizeWin;
+    public int FreeSpinTotal;
 
 
-    private void CountPrize(List<SymbolFotAnalyzer> winSymbols)
+    public void CountPrize(List<SymbolFotAnalyzer> winSymbols)
     {
         var startPrize = prizeWin;
         var prizeOfComb = winSymbols[0].SymbolWin;
         prizeWin += prizeOfComb;     
-        Counter.DOCounter(startPrize, prizeWin, 1.5f);        
+        Counter.DOCounter(startPrize, prizeWin, 1.5f); 
+        if (movingReels.FreeSpinsGo == true)
+        {
+            FreeSpinTotal += prizeOfComb;
+        }
+    }
+    public void ResetFreeTotalPrize()
+    {
+        FreeSpinTotal = 0;
     }
 
     private void WinLineCheck(WinLine winLine)
@@ -29,11 +39,13 @@ public class WinLinesChecker : MonoBehaviour
         var winSymbol2 = List.WinList[1];
         var winSymbol3 = List.WinList[2];
 
-
-        if (winSymbol1.SymbolType == winSymbol2.SymbolType && winSymbol2.SymbolType == winSymbol3.SymbolType)
+        if (winSymbol1.SymbolType != symbolType.scatter_clover)
         {
-            AnimateSymbol(List);
-            CountPrize(List.WinList);
+            if (winSymbol1.SymbolType == winSymbol2.SymbolType && winSymbol2.SymbolType == winSymbol3.SymbolType)
+            {
+                AnimateSymbol(List);
+                CountPrize(List.WinList);
+            }
         }
     }
 
@@ -104,6 +116,20 @@ public class WinLinesChecker : MonoBehaviour
         var winLines = gameConfig.WinLines;
         StartCoroutine(WaitNextWinLines(winLines));
 
+    }
+
+    public void StopAnimated()
+    {
+       
+        foreach (SymbolFotAnalyzer symbol in symbols)
+        {
+            symbol.SymbolAnimation.Stop("pulse");
+            symbol.SymbolAnimation.Stop("shadow");
+            symbol.SymbolImage.DOFade(1, 0.1f);
+            symbol.ParticleAnimation.Stop();
+            symbol.SymbolImage.rectTransform.sizeDelta = new Vector2(150,150);
+        }
+       
     }
 
 }

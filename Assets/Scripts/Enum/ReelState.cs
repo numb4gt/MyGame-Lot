@@ -1,6 +1,8 @@
 public enum ReelState
 {
-    ReelAfterAnimationForSpin,
+    Reel,
+    ReelAnimated,
+    ReelReadyForSpin,
     Stop,
     Spin,
     Stopping,

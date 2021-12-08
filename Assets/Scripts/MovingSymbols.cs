@@ -8,7 +8,6 @@ public class MovingSymbols : MonoBehaviour
 {
     [SerializeField] GameConfig gameConfig;
     [SerializeField] private RectTransform[] symbols;
-    [SerializeField] private Sprite[] sprites;
     private readonly float exitSymbol = 139.9f;
     [SerializeField] private float startPositionY;
 

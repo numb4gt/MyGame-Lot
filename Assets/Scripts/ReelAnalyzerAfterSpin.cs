@@ -7,8 +7,37 @@ public class ReelAnalyzerAfterSpin : MonoBehaviour
 
     [SerializeField] private SymbolFotAnalyzer[] symbolsAn;
     [SerializeField] GameConfig gameConfig;
+    [SerializeField] private MovingReels AllReels;
+    [SerializeField] private FreeSpins freeSpins;
     private int FinalScreenCounter = 0;
+    private int ReelNumber = 0;
 
+    private int[] ScatterArray = new int[3] { 0, 0, 0};
+
+    
+
+    public void ScaterOnReel()
+    {
+        
+        if (ScatterArray[0] != 0 && ScatterArray[1] != 0 && ScatterArray[2] != 0)
+        {
+            freeSpins.StartFreeSpins();
+           
+        }
+
+        //Debug.Log(ScatterArray[0]);
+        //Debug.Log(ScatterArray[1]);
+        //Debug.Log(ScatterArray[2]);
+
+        ResetScatterArray();
+    }
+
+    private void ResetScatterArray()
+    {
+        ScatterArray[0] = 0;
+        ScatterArray[1] = 0;
+        ScatterArray[2] = 0;
+    }
 
     private void SymbolTypeAnalys(SymbolFotAnalyzer symbol)
     {
@@ -25,7 +54,7 @@ public class ReelAnalyzerAfterSpin : MonoBehaviour
         else if (symbol.SymbolNumberFS == 2)
         {
             symbol.SymbolType = symbolType.scatter_clover;  //remove in 5 parts
-            symbol.SymbolWin = 100;
+            ScatterArray[ReelNumber]++;
         }
         else if (symbol.SymbolNumberFS == 3)
         {
@@ -137,13 +166,31 @@ public class ReelAnalyzerAfterSpin : MonoBehaviour
 
     public void StartAnalysisReel()
     {
+        
         int FinalScreensLength = gameConfig.FinalScreens.Length;
-
+        int i = 1;
             foreach (var Symbol in symbolsAn)
             {
                 SymbolType(Symbol);                            
                 SymbolTypeAnalys(Symbol);
+
+                 #region  ќ—“џЋ№ 
+                 if (i == 3) //дл€ 6 задани€ јналайзер–илов будет перенесен на каждый рил отдельно дл€ срабатывани€ сразу после остановки
+                 {            //в данном костыле не будет надобности
+                     ReelNumber++;
+                 }
+                        if (i == 6)
+                        {
+                            ReelNumber++;
+                        }
+
+
+                  i++;
             }
+
+               ScaterOnReel();
+               ReelNumber = 0;
+            #endregion
 
         //counter update
         if (FinalScreenCounter == (FinalScreensLength-1))

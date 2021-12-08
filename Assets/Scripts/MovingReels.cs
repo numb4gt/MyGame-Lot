@@ -7,24 +7,30 @@ using UnityEngine.UI;
 
 public class MovingReels : MonoBehaviour
 {
-    [SerializeField] private RectTransform[] reels;
+    [SerializeField] public RectTransform[] reels;
     [SerializeField] private MovingSymbols[] reelsSymbols; 
     [SerializeField] private float delayStep;
     [SerializeField] private Ease startEase;
     [SerializeField] private Ease stopEase;
     [SerializeField] private float boostDur, startDur, stopDur, boostDist, startDist, stopDist;
-    [SerializeField] private Button playButton;
-    [SerializeField] private RectTransform playButtonRT;
-    [SerializeField] private Button stopButton;
-    [SerializeField] private RectTransform stopButtonRT;
+    [SerializeField] public Button playButton;
+    [SerializeField] public RectTransform playButtonRT;
+    [SerializeField] public Button stopButton;
+    [SerializeField] public RectTransform stopButtonRT;
     [SerializeField] private float symbolHight;
     [SerializeField] private int visibleSymb;
     [SerializeField] private WinLinesChecker WLchecker; //second
     [SerializeField] private ReelAnalyzerAfterSpin RTanalyzer; //first
 
-    private Dictionary<RectTransform, MovingSymbols> reelsDictionary;
+    
+
+    public Dictionary<RectTransform, MovingSymbols> reelsDictionary;
     private float startPosY;
     private float posReel3;
+
+    public bool FreeSpinsGo = false;
+    public bool IsReelAnimated = false;
+    public bool LastSpin = false;
 
     private void Start()
     {
@@ -40,7 +46,11 @@ public class MovingReels : MonoBehaviour
     }
 
     public void DoMove()
-    {
+    {   if (FreeSpinsGo == true)
+        {
+            stopButton.interactable = false;
+        }
+        reelsDictionary[reels[2]].ReelState = ReelState.Reel;
         playButtonRT.localScale = Vector3.zero;
         playButton.interactable = false;
         stopButtonRT.localScale = Vector3.one;
@@ -85,7 +95,14 @@ public class MovingReels : MonoBehaviour
                 ResetPosition(reelRT);
                 if(reelRT.position.x == posReel3)
                 {
-                    stopButton.interactable = false;
+                    if (FreeSpinsGo == true)
+                    {
+                        IsReelAnimated = true;
+                    } 
+                    else
+                    {
+                        stopButton.interactable = false;
+                    }
 
                     RTanalyzer.StartAnalysisReel();
                     WLchecker.StartWinAnalys();
@@ -99,16 +116,18 @@ public class MovingReels : MonoBehaviour
 
     IEnumerator WaitForAnalyz(RectTransform ReelRT)
     {
-
         yield return new WaitUntil(() => WLchecker.ButtonActivate == true);
         if (reelsDictionary[ReelRT].ReelState == ReelState.Stop)
         {
-            stopButtonRT.localScale = Vector3.zero;
-            
-            playButtonRT.localScale = Vector3.one;
-            playButton.interactable = true;
+            if (FreeSpinsGo == false) {
+                stopButtonRT.localScale = Vector3.zero;
+
+                playButtonRT.localScale = Vector3.one;
+                playButton.interactable = true;
+            }
 
             WLchecker.ButtonActivate = false;
+            reelsDictionary[ReelRT].ReelState = ReelState.ReelReadyForSpin;
         }
 
     }
@@ -138,13 +157,23 @@ public class MovingReels : MonoBehaviour
 
     public void StopClick()
     {
-        stopButton.interactable = false;
+        if (FreeSpinsGo==false) {
+            stopButton.interactable = false;
+        }
 
-        foreach(var reelRT in reels)
+        if (IsReelAnimated == true)
         {
-            if (reelsDictionary[reelRT].ReelState == ReelState.Spin)
+            WLchecker.StopAnimated();
+        }
+        else
+        {
+
+            foreach (var reelRT in reels)
             {
-                CorrectReelPosition(reelRT);
+                if (reelsDictionary[reelRT].ReelState == ReelState.Spin)
+                {
+                    CorrectReelPosition(reelRT);
+                }
             }
         }
     }

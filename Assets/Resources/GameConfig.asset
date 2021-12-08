@@ -23,12 +23,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6fd0536ab6398143bb49bc87e1f3f43, type: 2}
   - {fileID: 11400000, guid: ee593c406ed169643bde49be92d5d534, type: 2}
   finalScreens:
+  - {fileID: 11400000, guid: 88bd0e8beb456fd4a9d7936e9e636426, type: 2}
   - {fileID: 11400000, guid: 0070762ea6b57c648a4a47935b58ff71, type: 2}
   - {fileID: 11400000, guid: ebe8f0ff98561f44880c5458824458ea, type: 2}
-  - {fileID: 11400000, guid: 88bd0e8beb456fd4a9d7936e9e636426, type: 2}
   - {fileID: 11400000, guid: fa0bddbe126fbef4d8e2e1bac5322255, type: 2}
   - {fileID: 11400000, guid: 279d1c3dfca2dcf458f84622c276a1a0, type: 2}
-  - {fileID: 11400000, guid: 3dcd78d9988683440997730354755483, type: 2}
+  - {fileID: 11400000, guid: e6c789d2425f6374194a9bdfc3c852ea, type: 2}
+  - {fileID: 11400000, guid: da02d95f3f7e3de4e80ec13011e23ddf, type: 2}
+  - {fileID: 11400000, guid: e6c789d2425f6374194a9bdfc3c852ea, type: 2}
+  - {fileID: 11400000, guid: 279d1c3dfca2dcf458f84622c276a1a0, type: 2}
+  - {fileID: 11400000, guid: fa0bddbe126fbef4d8e2e1bac5322255, type: 2}
+  - {fileID: 11400000, guid: e6c789d2425f6374194a9bdfc3c852ea, type: 2}
+  - {fileID: 11400000, guid: da02d95f3f7e3de4e80ec13011e23ddf, type: 2}
+  - {fileID: 11400000, guid: ebe8f0ff98561f44880c5458824458ea, type: 2}
+  - {fileID: 11400000, guid: fa0bddbe126fbef4d8e2e1bac5322255, type: 2}
   visibleSymbolsOnReel: 3
   winLines:
   - {fileID: 11400000, guid: 242c78dc65d92d84ba51fbbf329f9445, type: 2}
